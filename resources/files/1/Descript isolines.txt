@@ -1,0 +1,30 @@
+Data title: Isolines of the bathymetry of the Caspian Sea
+
+Titles of the files: Ctour1.shp - depth 5 m, (linear theme in the format of the Arc View Gis software of the ESRI company),
+       Ctour2.shp - depth 10 m, (linear theme),
+       Ctour3.shp - depth 20 m, (linear theme),
+       Ctour4.shp - depth 50 m, (linear theme),
+       Ctour5.shp - depths 100-1000 m, interval 100 m, (linear theme).
+
+Units: geographical coordinates - decimal degree (WGS 84), depth data - meter.
+
+Introduction: Isolines of the bathymetry is used for showing the depth of the seas. 
+
+Date of creation (last revision): July 1999.
+
+Author: Ziyafat Kerimov (Caspian Environment Program).
+
+Address for correspondence:
+ PCU of Caspian Environment Program
+ Room 108, Government Building
+ U.Hajibekov str., 40
+ Baku-370016,
+ Azerbaijan 
+ 
+ Phone:  +994 12 97 17 85
+ Fax:    +994 12 97 17 86
+ E-mail: zkerimov@caspian.in-baku.com
+
+Used dataset: The Navigation Map published by the Navigation and Oceanography Department of the Defense Ministry of the USSR in 1987. Scale 1:1000000. Mercator projection.
+
+Method and the software used for map creation: The depth data obtained by digitizing the map in Arc View GIS 3.1 (ESRI). The depth isolines are created using the Spatial Analyst 1.1 extension of the Arc View GIS.
