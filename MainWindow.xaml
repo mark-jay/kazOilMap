@@ -1,4 +1,4 @@
-﻿<Window x:Class="TestShapeFile.MainWindow"    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    Title="kazOilMap" Height="409" Width="576" xmlns:my="clr-namespace:System;assembly=mscorlib"    Closing="mainWindow_Closing" KeyDown="mainWindow_KeyDown">
+﻿<Window x:Class="kazOilMap.MainWindow"    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    Title="kazOilMap" Height="409" Width="576" xmlns:my="clr-namespace:System;assembly=mscorlib"    Closing="mainWindow_Closing" KeyDown="mainWindow_KeyDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

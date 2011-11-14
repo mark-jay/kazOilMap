@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestShapeFile.Properties {
+namespace kazOilMap.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

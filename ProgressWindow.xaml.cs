@@ -14,7 +14,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace TestShapeFile
+namespace kazOilMap
 {
     /// <summary>
     /// ProgressWindow implements a basic progress window that

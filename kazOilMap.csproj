@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6F7760E7-1CD2-4EE7-9900-131EEC73172E}</ProjectGuid>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <RootNamespace>TestShapeFile</RootNamespace>
-    <AssemblyName>TestShapeFile</AssemblyName>
+    <RootNamespace>kazOilMap</RootNamespace>
+    <AssemblyName>kazOilMap</AssemblyName>
     <WarningLevel>4</WarningLevel>
     <OutputType>winexe</OutputType>
     <MinFrameworkVersionRequired>3.0</MinFrameworkVersionRequired>
@@ -37,7 +37,7 @@
     <Optimize>false</Optimize>
     <OutputPath>.\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DocumentationFile>bin\Debug\TestShapeFile.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\kazOilMap.XML</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -45,7 +45,7 @@
     <Optimize>true</Optimize>
     <OutputPath>.\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>bin\Release\TestShapeFile.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\kazOilMap.XML</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TestShapeFile
+namespace kazOilMap
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml.
@@ -58,8 +58,8 @@ namespace TestShapeFile
         private void mainWindow_Closing(object sender, CancelEventArgs e)
         {
             // Ask the user to confirm exit.
-            string msg = TestShapeFile.Properties.Resources.MainWindow_ExitQuestion;
-            string appName = TestShapeFile.Properties.Resources.MainWindow_Title;
+            string msg = kazOilMap.Properties.Resources.MainWindow_ExitQuestion;
+            string appName = kazOilMap.Properties.Resources.MainWindow_Title;
             MessageBoxResult result = MessageBox.Show(msg, appName, MessageBoxButton.YesNo, MessageBoxImage.Question);
             if ( result == MessageBoxResult.Yes )
             {
@@ -114,8 +114,8 @@ namespace TestShapeFile
         private void resetMI_Click(object sender, EventArgs e)
         {
             // Ask user to confirm reset of canvas.
-            string msg = TestShapeFile.Properties.Resources.MainWindow_ResetQuestion;
-            string appName = TestShapeFile.Properties.Resources.MainWindow_Title;
+            string msg = kazOilMap.Properties.Resources.MainWindow_ResetQuestion;
+            string appName = kazOilMap.Properties.Resources.MainWindow_Title;
             MessageBoxResult result = MessageBox.Show(msg, appName, MessageBoxButton.YesNo, MessageBoxImage.Question);
             if ( result == MessageBoxResult.Yes )
             {

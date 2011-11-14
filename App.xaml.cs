@@ -7,7 +7,7 @@ using System.Data;
 using System.Xml;
 using System.Configuration;
 
-namespace TestShapeFile
+namespace kazOilMap
 {
     /// <summary>
     /// Interaction logic for App.xaml.

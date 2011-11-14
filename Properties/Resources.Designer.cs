@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestShapeFile.Properties {
+namespace kazOilMap.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TestShapeFile.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TestShapeFile.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("kazOilMap.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -79,7 +79,7 @@ namespace TestShapeFile.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на TestShapeFile.
+        ///   Ищет локализованную строку, похожую на kazOilMap.
         /// </summary>
         internal static string MainWindow_Title {
             get {

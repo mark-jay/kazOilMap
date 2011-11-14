@@ -1,0 +1,955 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>kazOilMap</name>
+    </assembly>
+    <members>
+        <member name="T:kazOilMap.ShapeType">
+            <summary>
+            Enumeration defining the various shape types. Each shapefile
+            contains only one type of shape (e.g., all polygons or all
+            polylines).
+            </summary>
+        </member>
+        <member name="F:kazOilMap.ShapeType.NullShape">
+            <summary>
+            Nullshape / placeholder record.
+            </summary>
+        </member>
+        <member name="F:kazOilMap.ShapeType.Point">
+            <summary>
+            Point record, for defining point locations such as a city.
+            </summary>
+        </member>
+        <member name="F:kazOilMap.ShapeType.PolyLine">
+            <summary>
+            One or more sets of connected points. Used to represent roads,
+            hydrography, etc.
+            </summary>
+        </member>
+        <member name="F:kazOilMap.ShapeType.Polygon">
+            <summary>
+            One or more sets of closed figures. Used to represent political
+            boundaries for countries, lakes, etc.
+            </summary>
+        </member>
+        <member name="F:kazOilMap.ShapeType.Multipoint">
+            <summary>
+            A cluster of points represented by a single shape record.
+            </summary>
+        </member>
+        <member name="T:kazOilMap.ShapeFileHeader">
+            <summary>
+            The ShapeFileHeader class represents the contents
+            of the fixed length, 100-byte file header at the
+            beginning of every shapefile.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeFileHeader.#ctor">
+            <summary>
+            Constructor for the ShapeFileHeader class.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeFileHeader.ToString">
+            <summary>
+            Output some of the fields of the file header.
+            </summary>
+            <returns>A string representation of the file header.</returns>
+        </member>
+        <member name="P:kazOilMap.ShapeFileHeader.Length">
+            <summary>
+            Indicate the fixed-length of this header in bytes.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileHeader.FileCode">
+            <summary>
+            Specifies the file code for an ESRI shapefile, which
+            should be the value, 9994.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileHeader.FileLength">
+            <summary>
+            Specifies the length of the shapefile, expressed
+            as the number of 16-bit words in the file.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileHeader.Version">
+            <summary>
+            Specifies the shapefile version number.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileHeader.ShapeType">
+            <summary>
+            Specifies the shape type for the file. A shapefile
+            contains only one type of shape.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileHeader.XMin">
+            <summary>
+            Indicates the minimum x-position of the bounding
+            box for the shapefile (expressed in degrees longitude).
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileHeader.YMin">
+            <summary>
+            Indicates the minimum y-position of the bounding
+            box for the shapefile (expressed in degrees latitude).
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileHeader.XMax">
+            <summary>
+            Indicates the maximum x-position of the bounding
+            box for the shapefile (expressed in degrees longitude).
+            </summary>       
+        </member>
+        <member name="P:kazOilMap.ShapeFileHeader.YMax">
+            <summary>
+            Indicates the maximum y-position of the bounding
+            box for the shapefile (expressed in degrees latitude).
+            </summary>
+        </member>
+        <member name="T:kazOilMap.ShapeFileRecord">
+            <summary>
+            The ShapeFileRecord class represents the contents of
+            a shape record, which is of variable length.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeFileRecord.#ctor">
+            <summary>
+            Constructor for the ShapeFileRecord class.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeFileRecord.ToString">
+            <summary>
+            Output some of the fields of the shapefile record.
+            </summary>
+            <returns>A string representation of the record.</returns>
+        </member>
+        <member name="P:kazOilMap.ShapeFileRecord.RecordNumber">
+            <summary>
+            Indicates the record number (or index) which starts at 1.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileRecord.ContentLength">
+            <summary>
+            Specifies the length of this shape record in 16-bit words.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileRecord.ShapeType">
+            <summary>
+            Specifies the shape type for this record.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileRecord.XMin">
+            <summary>
+            Indicates the minimum x-position of the bounding
+            box for the shape (expressed in degrees longitude).
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileRecord.YMin">
+            <summary>
+            Indicates the minimum y-position of the bounding
+            box for the shape (expressed in degrees latitude).
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileRecord.XMax">
+            <summary>
+            Indicates the maximum x-position of the bounding
+            box for the shape (expressed in degrees longitude).
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileRecord.YMax">
+            <summary>
+            Indicates the maximum y-position of the bounding
+            box for the shape (expressed in degrees latitude).
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileRecord.NumberOfParts">
+            <summary>
+            Indicates the number of parts for this shape.
+            A part is a connected set of points, analogous to
+            a PathFigure in WPF.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileRecord.NumberOfPoints">
+            <summary>
+            Specifies the total number of points defining
+            this shape record.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileRecord.Parts">
+            <summary>      
+            A collection of indices for the points array.
+            Each index identifies the starting point of the
+            corresponding part (or PathFigure using WPF
+            terminology).
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileRecord.Points">
+            <summary>
+            A collection of all of the points defining the
+            shape record.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileRecord.Attributes">
+            <summary>
+            Access the (dBASE) attribute values associated
+            with this shape record.
+            </summary>
+        </member>
+        <member name="T:kazOilMap.ShapeFileReadInfo">
+            <summary>
+            The ShapeFileReadInfo class stores information about a shapefile
+            that can be used by external clients during a shapefile read.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeFileReadInfo.#ctor">
+            <summary>
+            Constructor for the ShapeFileReadInfo class.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeFileReadInfo.ToString">
+            <summary>
+            Output some of the field values in the form of a string.
+            </summary>
+            <returns>A string representation of the field values.</returns>
+        </member>
+        <member name="P:kazOilMap.ShapeFileReadInfo.FileName">
+            <summary>
+            The full pathname of the shapefile.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileReadInfo.ShapeFile">
+            <summary>
+            A reference to the shapefile instance.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileReadInfo.Stream">
+            <summary>
+            An opened file stream for a shapefile.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileReadInfo.NumberOfBytesRead">
+            <summary>
+            The number of bytes read from a shapefile so far.
+            Can be used to compute a progress value.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFileReadInfo.RecordIndex">
+            <summary>
+            A general-purpose record index.
+            </summary>
+        </member>
+        <member name="T:kazOilMap.ShapeFile">
+            <summary>
+            The ShapeFile class represents the contents of a single
+            ESRI shapefile. This is the class which contains functionality
+            for reading shapefiles and their corresponding dBASE attribute
+            files.
+            </summary>
+            <remarks>
+            You can call the Read() method to import both shapes and attributes
+            at once. Or, you can open the file stream yourself and read the file
+            header or individual records one at a time. The advantage of this is
+            that it allows you to implement your own progress reporting functionality,
+            for example.
+            </remarks>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.#ctor">
+            <summary>
+            Constructor for the ShapeFile class.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.Read(System.String)">
+            <summary>
+            Read both shapes and attributes from the given
+            shapefile (and its corresponding dBASE file).
+            This is the top-level method for reading an ESRI
+            shapefile.
+            </summary>
+            <param name="fileName">Full pathname of the shapefile.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.ReadShapes(System.String)">
+            <summary>
+            Read shapes (geometry) from the given shapefile.
+            </summary>
+            <param name="fileName">Full pathname of the shapefile.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.ReadShapes(System.IO.Stream)">
+            <summary>
+            Read shapes (geometry) from the given stream.
+            </summary>
+            <param name="stream">Input stream for a shapefile.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.ReadShapeFileHeader(System.IO.Stream)">
+            <summary>
+            Read the file header of the shapefile.
+            </summary>
+            <param name="stream">Input stream.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.ReadShapeFileRecord(System.IO.Stream)">
+            <summary>
+            Read a shapefile record.
+            </summary>
+            <param name="stream">Input stream.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.ReadAttributes(System.String)">
+            <summary>
+            Read the table from specified dBASE (DBF) file and
+            merge the rows with shapefile records.
+            </summary>
+            <remarks>
+            The filename of the dBASE file is expected to follow 8.3 naming
+            conventions. If it doesn't follow the convention, we try to
+            determine the 8.3 short name ourselves (but the name we come up
+            with may not be correct in all cases).
+            </remarks>
+            <param name="dbaseFile">Full file path of the dBASE (DBF) file.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.ToString">
+            <summary>
+            Output the File Header in the form of a string.
+            </summary>
+            <returns>A string representation of the file header.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.ReadInt32_LE(System.IO.Stream)">
+            <summary>
+            Read a 4-byte integer using little endian (Intel)
+            byte ordering.
+            </summary>
+            <param name="stream">Input stream to read.</param>
+            <returns>The integer value.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.ReadInt32_BE(System.IO.Stream)">
+            <summary>
+            Read a 4-byte integer using big endian
+            byte ordering.
+            </summary>
+            <param name="stream">Input stream to read.</param>
+            <returns>The integer value.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.ReadDouble64_LE(System.IO.Stream)">
+            <summary>
+            Read an 8-byte double using little endian (Intel)
+            byte ordering.
+            </summary>
+            <param name="stream">Input stream to read.</param>
+            <returns>The double value.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.ReadPoint(System.IO.Stream,kazOilMap.ShapeFileRecord)">
+            <summary>
+            Read a shapefile Point record.
+            </summary>
+            <param name="stream">Input stream.</param>
+            <param name="record">Shapefile record to be updated.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.ReadMultipoint(System.IO.Stream,kazOilMap.ShapeFileRecord)">
+            <summary>
+            Read a shapefile MultiPoint record.
+            </summary>
+            <param name="stream">Input stream.</param>
+            <param name="record">Shapefile record to be updated.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.ReadPolygon(System.IO.Stream,kazOilMap.ShapeFileRecord)">
+            <summary>
+            Read a shapefile Polygon record.
+            </summary>
+            <param name="stream">Input stream.</param>
+            <param name="record">Shapefile record to be updated.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeFile.MergeAttributes(System.Data.DataTable)">
+            <summary>
+            Merge data rows from the given table with
+            the shapefile records.
+            </summary>
+            <param name="table">Attributes table.</param>
+        </member>
+        <member name="P:kazOilMap.ShapeFile.FileHeader">
+            <summary>
+            Access the file header of this shapefile.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeFile.Records">
+            <summary>
+            Access the collection of records for this shapefile.
+            </summary>
+        </member>
+        <member name="T:kazOilMap.App">
+            <summary>
+            Interaction logic for App.xaml.
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:kazOilMap.App.#ctor">
+            <summary>
+            Constructor for the App class.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:kazOilMap.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:kazOilMap.GeometryType">
+            <summary>
+            The GeometryType enumeration defines geometry types that
+            can be used when creating WPF shapes. Choosing a stream
+            geometry type can improve rendering performance.
+            </summary>
+        </member>
+        <member name="F:kazOilMap.GeometryType.UsePathGeometry">
+            <summary>
+            Use path geometry containing path figures.
+            </summary>
+        </member>
+        <member name="F:kazOilMap.GeometryType.UseStreamGeometry">
+            <summary>
+            Use StreamGeometry with StreamGeometryContext class
+            to specify drawing instructions.
+            </summary>
+        </member>
+        <member name="F:kazOilMap.GeometryType.UseStreamGeometryNotStroked">
+            <summary>
+            Same as UseStreamGeometry except that the figures
+            will be unstroked for greater performance (borders
+            won't be displayed for the shapes).
+            </summary>
+        </member>
+        <member name="T:kazOilMap.ShapeDisplay">
+            <summary>
+            ShapeDisplay is a helper class for importing ESRI shapefiles
+            and creating/displaying shapes on a WPF canvas. During the
+            import step, a progress window is displayed. This is implemented
+            using the WPF single-threaded programming model, which allows
+            tasks to be executed by a Dispatcher instance while keeping the
+            UI responsive.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.#ctor(System.Windows.Window,System.Windows.Controls.Canvas)">
+            <summary>
+            Constructor for the ShapeDisplay class.
+            </summary>
+            <param name="owner">Window that acts as an owner to child windows.</param>
+            <param name="canvas">The canvas on which to create WPF shapes.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.ReadShapeFile(System.String)">
+            <summary>
+            Read shapes and attributes from the given shapefile.
+            </summary>
+            <param name="fileName">Full pathname of a shapefile.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.CancelReadShapeFile">
+            <summary>
+            Request the current shapefile read operation to be cancelled.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.ResetCanvas">
+            <summary>
+            Reset the canvas.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.Zoom(System.Double)">
+            <summary>
+            Perform a zoom operation about the current center
+            of the canvas.
+            </summary>
+            <param name="zoomFactor">Zoom multiplication factor (1, 2, 4, etc).</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.Pan(System.Double,System.Double)">
+            <summary>
+            Perform a panning operation given X and Y factor values
+            which can be thought of as a fraction of the canvas actual
+            width or height.
+            </summary>
+            <param name="factorX">Fraction of canvas actual width to pan horizontally.</param>
+            <param name="factorY">Fraction of canvas actual height to pan vertically.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.SaveToXaml(System.IO.Stream)">
+            <summary>
+            Save the owner object (the main window) to XAML.
+            This method may take a long time to run if there
+            are many objects on the canvas (shapefile > 1 Mb).
+            </summary>
+            <param name="stream">Output stream for writing the XAML.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.CreateShapeTransform(kazOilMap.ShapeFileReadInfo)">
+            <summary>
+            Computes a transformation so that the shapefile geometry
+            will maximize the available space on the canvas and be
+            perfectly centered as well.
+            </summary>
+            <param name="info">Shapefile information.</param>
+            <returns>A transformation object.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.CreateShapeBrushes(System.Double,System.Double)">
+            <summary>
+            Create a set of linear gradient brushes which we can use
+            as a random pool for assignment to WPF shapes. A higher
+            gradient factor results in a stronger gradient effect.
+            </summary>
+            <param name="gradientFactor">Gradient factor from 0 to 1.</param>
+            <param name="gradientAngle">Direction of gradient in degrees.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.GetAdjustedColor(System.Windows.Media.Color,System.Double)">
+            <summary>
+            Given an input color, return an adjusted color using a
+            factor value which ranges from 0 to 1. The larger the factor,
+            the lighter the adjusted color. A factor of 0 means no adjustment
+            to the input color.
+            </summary>
+            <remarks>
+            Note that the alpha component of the input color is not adjusted.
+            </remarks>
+            <param name="inColor">Input color.</param>
+            <param name="factor">Color adjustment factor, from 0 to 1.</param>
+            <returns>An adjusted color value.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.GetRandomShapeBrush">
+            <summary>
+            Get the next brush that can be used to fill a WPF shape.
+            </summary>
+            <returns>A randomly selected brush.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.ReadNextShapeRecord(kazOilMap.ShapeFileReadInfo)">
+            <summary>
+            Read a block of shape file records and possibly schedule
+            the next read with the dispatcher.
+            </summary>
+            <param name="info">Shapefile read information.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.EndReadShapeFile">
+            <summary>
+            Perform some cleanup at the end of reading a shapefile.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.EndReadShapeFile(kazOilMap.ShapeFileReadInfo)">
+            <summary>
+            Perform some cleanup at the end of reading a shapefile.
+            </summary>
+            <param name="info">Shapefile read information.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.ReadDbaseAttributes(kazOilMap.ShapeFileReadInfo)">
+            <summary>
+            Read dBASE file attributes.
+            </summary>
+            <param name="info">Shapefile read information.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.CreateWPFShape(System.String,kazOilMap.ShapeFileRecord)">
+            <summary>
+            Create a WPF shape given a shapefile record.
+            </summary>
+            <param name="shapeName">The name of the WPF shape.</param>
+            <param name="record">Shapefile record.</param>
+            <returns>The created WPF shape.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.CreatePathGeometry(kazOilMap.ShapeFileRecord)">
+            <summary>
+            Create a PathGeometry given a shapefile record.
+            </summary>
+            <param name="record">Shapefile record.</param>
+            <returns>A PathGeometry instance.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.CreateStreamGeometry(kazOilMap.ShapeFileRecord)">
+            <summary>
+            Create a StreamGeometry given a shapefile record.
+            </summary>
+            <param name="record">Shapefile record.</param>
+            <returns>A StreamGeometry instance.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.CreateWPFPoint(System.String,kazOilMap.ShapeFileRecord)">
+            <summary>
+            Create a WPF shape to represent a shapefile point or
+            multipoint record.
+            </summary>
+            <param name="shapeName">The name of the WPF shape.</param>
+            <param name="record">Shapefile record.</param>
+            <returns>The created WPF shape.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.DisplayShapes(kazOilMap.ShapeFileReadInfo)">
+            <summary>
+            Begin creating and displaying WPF shapes on the canvas.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.DisplayNextShapeRecord(kazOilMap.ShapeFileReadInfo)">
+            <summary>
+            Display a block of shape records as WPF shapes, and schedule
+            the next display with the dispatcher if needed.
+            </summary>
+            <param name="info">Shapefile read information.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.ShowProgress(System.String,System.Double)">
+            <summary>
+            Show the progress window with the given progress value.
+            </summary>
+            <param name="progressText">Progress text to display.</param>
+            <param name="progressValue">Progress value from 0 to 100 percent.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.HideProgress">
+            <summary>
+            Hide the progress window.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.progressWindow_Cancel(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Handle the Cancel button being pressed in the progress window.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.progressWindow_Closed(System.Object,System.EventArgs)">
+            <summary>
+            Handle closing of the progress window.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.GetLonLatCoordinates(System.Windows.Point)">
+            <summary>
+            Given a canvas position, convert it to a longitude
+            and latitude coordinate.
+            </summary>
+            <param name="canvasPosition">A canvas position or location.</param>
+            <returns>The corresponding point in lon/lat coordinates.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.GetLonLatDisplayText(System.Windows.Point)">
+            <summary>
+            Given a lon/lat coordinate, determine the corresponding
+            display text.
+            </summary>
+            <param name="lonLat">A lon/lat coordinate.</param>
+            <returns>Formatted lon/lat display text.</returns>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.DisplayLonLatCoord(System.Windows.Point)">
+            <summary>
+            Given a canvas position, display the corresponding
+            lon/lat coordinates on the canvas.
+            </summary>
+            <param name="canvasPosition">A canvas position or location.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.DisplayLonLatDefault">
+            <summary>
+            Display some default text in the lon/lat label.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.canvas_MouseEnter(System.Object,System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Handle the MouseEnter event for the canvas.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.canvas_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Handle the MouseDown event for the canvas.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.canvas_MouseMove(System.Object,System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Handle the MouseMove event for the canvas.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.canvas_MouseUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Handle the MouseUp event for the canvas.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.ShapeDisplay.canvas_MouseLeave(System.Object,System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Handle the MouseLeave event for the canvas.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="P:kazOilMap.ShapeDisplay.IsReadingShapeFile">
+            <summary>
+            Indicates if a shapefile read operation is in progress.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeDisplay.CanZoom">
+            <summary>
+            Indicates if we can perform a zoom operation. This is true
+            the shape transform has been set (meaning at least one shapefile
+            has been loaded).
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeDisplay.IsPanningEnabled">
+            <summary>
+            Indicates if panning is enabled or not. This
+            applies to both mouse and keyboard panning.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeDisplay.IsDisplayLonLatEnabled">
+            <summary>
+            Indicates if display of lon/lat coordinates
+            is enabled or not.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ShapeDisplay.GeometryType">
+            <summary>
+            Specifies the geometry type to use when creating WPF shapes.
+            </summary>
+        </member>
+        <member name="T:kazOilMap.ShapeDisplay.ReadNextPrototype">
+            <summary>
+            Defines the prototype for a method that reads a block
+            of shapefile records. Such a method is intended to be
+            executed by the Dispatcher.
+            </summary>
+            <param name="info">Shapefile read information.</param>
+        </member>
+        <member name="T:kazOilMap.ShapeDisplay.DisplayNextPrototype">
+            <summary>
+            Defines the prototype for a method that creates and displays
+            a set of WPF shapes. Such a method is intended to be
+            executed by the Dispatcher.
+            </summary>
+            <param name="info">Shapefile read information.</param>
+        </member>
+        <member name="T:kazOilMap.ProgressWindow">
+            <summary>
+            ProgressWindow implements a basic progress window that
+            supports a Cancel button.
+            </summary>
+            <summary>
+            ProgressWindow
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ProgressWindow.#ctor">
+            <summary>
+            Constructor for ProgressWindow class.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.ProgressWindow.cancelButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle the Click event for the Cancel button.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.ProgressWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="E:kazOilMap.ProgressWindow.Cancel">
+            <summary>
+            Event to notify that the Cancel button has been pressed.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ProgressWindow.ProgressText">
+            <summary>
+            Specify the text to display in the progress window.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.ProgressWindow.ProgressValue">
+            <summary>
+            Specify the value of the progress bar.
+            </summary>
+        </member>
+        <member name="T:kazOilMap.Properties.Resources">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.Properties.Resources.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.Properties.Resources.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.Properties.Resources.MainWindow_ExitQuestion">
+            <summary>
+              Ищет локализованную строку, похожую на Exit application?.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.Properties.Resources.MainWindow_ResetQuestion">
+            <summary>
+              Ищет локализованную строку, похожую на Reset canvas?.
+            </summary>
+        </member>
+        <member name="P:kazOilMap.Properties.Resources.MainWindow_Title">
+            <summary>
+              Ищет локализованную строку, похожую на kazOilMap.
+            </summary>
+        </member>
+        <member name="T:kazOilMap.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml.
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:kazOilMap.MainWindow.#ctor">
+            <summary>
+            Constructor for MainWindow class.
+            </summary>
+        </member>
+        <member name="M:kazOilMap.MainWindow.fileMI_SubmenuOpened(System.Object,System.EventArgs)">
+            <summary>
+            Handle when the File menu is opened, so that we can update
+            the enabled state of the menu items appropriately.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.openMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle File|Open menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.resetMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle File|Reset menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.exitMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle File|Exit menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.viewMI_SubmenuOpened(System.Object,System.EventArgs)">
+            <summary>
+            Handle when the View Menu is opened.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.displayLonLatMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Display Lon/Lat menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.enablePanningMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Enable Panning menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.zoomMI_SubmenuOpened(System.Object,System.EventArgs)">
+            <summary>
+            Handle when the View|Zoom menu is opened, so that we can update
+            the enabled state of the menu items appropriately.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.zoom50_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 50% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.zoom100_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 100% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.zoom200_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 200% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.zoom400_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 400% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.zoom800_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 800% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.zoom1600_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 1600% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.zoom3200_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 3200% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.geometryTypeMI_SubmenuOpened(System.Object,System.EventArgs)">
+            <summary>
+            Handle when the Options|Geometry Type menu is opened, so that we can
+            update the enabled and checked states of the menu items appropriately.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.pathGeometryMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle Geometry Type|Path Geometry menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.streamGeometryMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle Geometry|Stream Geometry menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.streamGeometryUnstrokedMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle Geometry Type|Stream Geometry Unstroked menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.mainWindow_KeyDown(System.Object,System.Windows.Input.KeyboardEventArgs)">
+            <summary>
+            Handle the KeyDown event for the main window.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:kazOilMap.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

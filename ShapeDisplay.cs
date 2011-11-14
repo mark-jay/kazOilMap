@@ -20,7 +20,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace TestShapeFile
+namespace kazOilMap
 {
     /// <summary>
     /// The GeometryType enumeration defines geometry types that

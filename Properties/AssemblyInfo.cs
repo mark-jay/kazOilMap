@@ -14,11 +14,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TestShapeFile")]
+[assembly: AssemblyTitle("kazOilMap")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("n/a")]
-[assembly: AssemblyProduct("TestShapeFile")]
+[assembly: AssemblyProduct("kazOilMap")]
 [assembly: AssemblyCopyright("Copyright @ S.Chan 2007")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

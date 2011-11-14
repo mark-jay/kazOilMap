@@ -14,7 +14,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Windows;
 
-namespace TestShapeFile
+namespace kazOilMap
 {
     /// <summary>
     /// Enumeration defining the various shape types. Each shapefile
