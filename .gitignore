@@ -1,6 +1,6 @@
 
 # all stuff in bin and obj folder
-./bin/*
-./obj/*
+bin
+obj
 
 # 
