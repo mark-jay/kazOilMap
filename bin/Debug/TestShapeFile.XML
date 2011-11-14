@@ -4,583 +4,6 @@
         <name>TestShapeFile</name>
     </assembly>
     <members>
-        <member name="T:TestShapeFile.ProgressWindow">
-            <summary>
-            ProgressWindow implements a basic progress window that
-            supports a Cancel button.
-            </summary>
-            <summary>
-            ProgressWindow
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.ProgressWindow.#ctor">
-            <summary>
-            Constructor for ProgressWindow class.
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.ProgressWindow.cancelButton_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle the Click event for the Cancel button.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.ProgressWindow.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="E:TestShapeFile.ProgressWindow.Cancel">
-            <summary>
-            Event to notify that the Cancel button has been pressed.
-            </summary>
-        </member>
-        <member name="P:TestShapeFile.ProgressWindow.ProgressText">
-            <summary>
-            Specify the text to display in the progress window.
-            </summary>
-        </member>
-        <member name="P:TestShapeFile.ProgressWindow.ProgressValue">
-            <summary>
-            Specify the value of the progress bar.
-            </summary>
-        </member>
-        <member name="T:TestShapeFile.Properties.Resources">
-            <summary>
-              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
-            </summary>
-        </member>
-        <member name="P:TestShapeFile.Properties.Resources.ResourceManager">
-            <summary>
-              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
-            </summary>
-        </member>
-        <member name="P:TestShapeFile.Properties.Resources.Culture">
-            <summary>
-              Перезаписывает свойство CurrentUICulture текущего потока для всех
-              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
-            </summary>
-        </member>
-        <member name="P:TestShapeFile.Properties.Resources.MainWindow_ExitQuestion">
-            <summary>
-              Ищет локализованную строку, похожую на Exit application?.
-            </summary>
-        </member>
-        <member name="P:TestShapeFile.Properties.Resources.MainWindow_ResetQuestion">
-            <summary>
-              Ищет локализованную строку, похожую на Reset canvas?.
-            </summary>
-        </member>
-        <member name="P:TestShapeFile.Properties.Resources.MainWindow_Title">
-            <summary>
-              Ищет локализованную строку, похожую на TestShapeFile.
-            </summary>
-        </member>
-        <member name="T:TestShapeFile.MainWindow">
-            <summary>
-            Interaction logic for MainWindow.xaml.
-            </summary>
-            <summary>
-            MainWindow
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.#ctor">
-            <summary>
-            Constructor for MainWindow class.
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.fileMI_SubmenuOpened(System.Object,System.EventArgs)">
-            <summary>
-            Handle when the File menu is opened, so that we can update
-            the enabled state of the menu items appropriately.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.openMI_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle File|Open menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.resetMI_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle File|Reset menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.exitMI_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle File|Exit menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.viewMI_SubmenuOpened(System.Object,System.EventArgs)">
-            <summary>
-            Handle when the View Menu is opened.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.displayLonLatMI_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle View|Display Lon/Lat menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.enablePanningMI_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle View|Enable Panning menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.zoomMI_SubmenuOpened(System.Object,System.EventArgs)">
-            <summary>
-            Handle when the View|Zoom menu is opened, so that we can update
-            the enabled state of the menu items appropriately.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.zoom50_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle View|Zoom 50% menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.zoom100_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle View|Zoom 100% menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.zoom200_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle View|Zoom 200% menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.zoom400_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle View|Zoom 400% menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.zoom800_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle View|Zoom 800% menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.zoom1600_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle View|Zoom 1600% menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.zoom3200_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle View|Zoom 3200% menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.geometryTypeMI_SubmenuOpened(System.Object,System.EventArgs)">
-            <summary>
-            Handle when the Options|Geometry Type menu is opened, so that we can
-            update the enabled and checked states of the menu items appropriately.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.pathGeometryMI_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle Geometry Type|Path Geometry menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.streamGeometryMI_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle Geometry|Stream Geometry menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.streamGeometryUnstrokedMI_Click(System.Object,System.EventArgs)">
-            <summary>
-            Handle Geometry Type|Stream Geometry Unstroked menu item click.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.mainWindow_KeyDown(System.Object,System.Windows.Input.KeyboardEventArgs)">
-            <summary>
-            Handle the KeyDown event for the main window.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.MainWindow.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="T:TestShapeFile.GeometryType">
-            <summary>
-            The GeometryType enumeration defines geometry types that
-            can be used when creating WPF shapes. Choosing a stream
-            geometry type can improve rendering performance.
-            </summary>
-        </member>
-        <member name="F:TestShapeFile.GeometryType.UsePathGeometry">
-            <summary>
-            Use path geometry containing path figures.
-            </summary>
-        </member>
-        <member name="F:TestShapeFile.GeometryType.UseStreamGeometry">
-            <summary>
-            Use StreamGeometry with StreamGeometryContext class
-            to specify drawing instructions.
-            </summary>
-        </member>
-        <member name="F:TestShapeFile.GeometryType.UseStreamGeometryNotStroked">
-            <summary>
-            Same as UseStreamGeometry except that the figures
-            will be unstroked for greater performance (borders
-            won't be displayed for the shapes).
-            </summary>
-        </member>
-        <member name="T:TestShapeFile.ShapeDisplay">
-            <summary>
-            ShapeDisplay is a helper class for importing ESRI shapefiles
-            and creating/displaying shapes on a WPF canvas. During the
-            import step, a progress window is displayed. This is implemented
-            using the WPF single-threaded programming model, which allows
-            tasks to be executed by a Dispatcher instance while keeping the
-            UI responsive.
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.#ctor(System.Windows.Window,System.Windows.Controls.Canvas)">
-            <summary>
-            Constructor for the ShapeDisplay class.
-            </summary>
-            <param name="owner">Window that acts as an owner to child windows.</param>
-            <param name="canvas">The canvas on which to create WPF shapes.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.ReadShapeFile(System.String)">
-            <summary>
-            Read shapes and attributes from the given shapefile.
-            </summary>
-            <param name="fileName">Full pathname of a shapefile.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.CancelReadShapeFile">
-            <summary>
-            Request the current shapefile read operation to be cancelled.
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.ResetCanvas">
-            <summary>
-            Reset the canvas.
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.Zoom(System.Double)">
-            <summary>
-            Perform a zoom operation about the current center
-            of the canvas.
-            </summary>
-            <param name="zoomFactor">Zoom multiplication factor (1, 2, 4, etc).</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.Pan(System.Double,System.Double)">
-            <summary>
-            Perform a panning operation given X and Y factor values
-            which can be thought of as a fraction of the canvas actual
-            width or height.
-            </summary>
-            <param name="factorX">Fraction of canvas actual width to pan horizontally.</param>
-            <param name="factorY">Fraction of canvas actual height to pan vertically.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.SaveToXaml(System.IO.Stream)">
-            <summary>
-            Save the owner object (the main window) to XAML.
-            This method may take a long time to run if there
-            are many objects on the canvas (shapefile > 1 Mb).
-            </summary>
-            <param name="stream">Output stream for writing the XAML.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.CreateShapeTransform(TestShapeFile.ShapeFileReadInfo)">
-            <summary>
-            Computes a transformation so that the shapefile geometry
-            will maximize the available space on the canvas and be
-            perfectly centered as well.
-            </summary>
-            <param name="info">Shapefile information.</param>
-            <returns>A transformation object.</returns>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.CreateShapeBrushes(System.Double,System.Double)">
-            <summary>
-            Create a set of linear gradient brushes which we can use
-            as a random pool for assignment to WPF shapes. A higher
-            gradient factor results in a stronger gradient effect.
-            </summary>
-            <param name="gradientFactor">Gradient factor from 0 to 1.</param>
-            <param name="gradientAngle">Direction of gradient in degrees.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.GetAdjustedColor(System.Windows.Media.Color,System.Double)">
-            <summary>
-            Given an input color, return an adjusted color using a
-            factor value which ranges from 0 to 1. The larger the factor,
-            the lighter the adjusted color. A factor of 0 means no adjustment
-            to the input color.
-            </summary>
-            <remarks>
-            Note that the alpha component of the input color is not adjusted.
-            </remarks>
-            <param name="inColor">Input color.</param>
-            <param name="factor">Color adjustment factor, from 0 to 1.</param>
-            <returns>An adjusted color value.</returns>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.GetRandomShapeBrush">
-            <summary>
-            Get the next brush that can be used to fill a WPF shape.
-            </summary>
-            <returns>A randomly selected brush.</returns>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.ReadNextShapeRecord(TestShapeFile.ShapeFileReadInfo)">
-            <summary>
-            Read a block of shape file records and possibly schedule
-            the next read with the dispatcher.
-            </summary>
-            <param name="info">Shapefile read information.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.EndReadShapeFile">
-            <summary>
-            Perform some cleanup at the end of reading a shapefile.
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.EndReadShapeFile(TestShapeFile.ShapeFileReadInfo)">
-            <summary>
-            Perform some cleanup at the end of reading a shapefile.
-            </summary>
-            <param name="info">Shapefile read information.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.ReadDbaseAttributes(TestShapeFile.ShapeFileReadInfo)">
-            <summary>
-            Read dBASE file attributes.
-            </summary>
-            <param name="info">Shapefile read information.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.CreateWPFShape(System.String,TestShapeFile.ShapeFileRecord)">
-            <summary>
-            Create a WPF shape given a shapefile record.
-            </summary>
-            <param name="shapeName">The name of the WPF shape.</param>
-            <param name="record">Shapefile record.</param>
-            <returns>The created WPF shape.</returns>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.CreatePathGeometry(TestShapeFile.ShapeFileRecord)">
-            <summary>
-            Create a PathGeometry given a shapefile record.
-            </summary>
-            <param name="record">Shapefile record.</param>
-            <returns>A PathGeometry instance.</returns>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.CreateStreamGeometry(TestShapeFile.ShapeFileRecord)">
-            <summary>
-            Create a StreamGeometry given a shapefile record.
-            </summary>
-            <param name="record">Shapefile record.</param>
-            <returns>A StreamGeometry instance.</returns>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.CreateWPFPoint(System.String,TestShapeFile.ShapeFileRecord)">
-            <summary>
-            Create a WPF shape to represent a shapefile point or
-            multipoint record.
-            </summary>
-            <param name="shapeName">The name of the WPF shape.</param>
-            <param name="record">Shapefile record.</param>
-            <returns>The created WPF shape.</returns>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.DisplayShapes(TestShapeFile.ShapeFileReadInfo)">
-            <summary>
-            Begin creating and displaying WPF shapes on the canvas.
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.DisplayNextShapeRecord(TestShapeFile.ShapeFileReadInfo)">
-            <summary>
-            Display a block of shape records as WPF shapes, and schedule
-            the next display with the dispatcher if needed.
-            </summary>
-            <param name="info">Shapefile read information.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.ShowProgress(System.String,System.Double)">
-            <summary>
-            Show the progress window with the given progress value.
-            </summary>
-            <param name="progressText">Progress text to display.</param>
-            <param name="progressValue">Progress value from 0 to 100 percent.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.HideProgress">
-            <summary>
-            Hide the progress window.
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.progressWindow_Cancel(System.Object,System.ComponentModel.CancelEventArgs)">
-            <summary>
-            Handle the Cancel button being pressed in the progress window.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.progressWindow_Closed(System.Object,System.EventArgs)">
-            <summary>
-            Handle closing of the progress window.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.GetLonLatCoordinates(System.Windows.Point)">
-            <summary>
-            Given a canvas position, convert it to a longitude
-            and latitude coordinate.
-            </summary>
-            <param name="canvasPosition">A canvas position or location.</param>
-            <returns>The corresponding point in lon/lat coordinates.</returns>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.GetLonLatDisplayText(System.Windows.Point)">
-            <summary>
-            Given a lon/lat coordinate, determine the corresponding
-            display text.
-            </summary>
-            <param name="lonLat">A lon/lat coordinate.</param>
-            <returns>Formatted lon/lat display text.</returns>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.DisplayLonLatCoord(System.Windows.Point)">
-            <summary>
-            Given a canvas position, display the corresponding
-            lon/lat coordinates on the canvas.
-            </summary>
-            <param name="canvasPosition">A canvas position or location.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.DisplayLonLatDefault">
-            <summary>
-            Display some default text in the lon/lat label.
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.canvas_MouseEnter(System.Object,System.Windows.Input.MouseEventArgs)">
-            <summary>
-            Handle the MouseEnter event for the canvas.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.canvas_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
-            <summary>
-            Handle the MouseDown event for the canvas.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.canvas_MouseMove(System.Object,System.Windows.Input.MouseEventArgs)">
-            <summary>
-            Handle the MouseMove event for the canvas.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.canvas_MouseUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
-            <summary>
-            Handle the MouseUp event for the canvas.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="M:TestShapeFile.ShapeDisplay.canvas_MouseLeave(System.Object,System.Windows.Input.MouseEventArgs)">
-            <summary>
-            Handle the MouseLeave event for the canvas.
-            </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event arguments.</param>
-        </member>
-        <member name="P:TestShapeFile.ShapeDisplay.IsReadingShapeFile">
-            <summary>
-            Indicates if a shapefile read operation is in progress.
-            </summary>
-        </member>
-        <member name="P:TestShapeFile.ShapeDisplay.CanZoom">
-            <summary>
-            Indicates if we can perform a zoom operation. This is true
-            the shape transform has been set (meaning at least one shapefile
-            has been loaded).
-            </summary>
-        </member>
-        <member name="P:TestShapeFile.ShapeDisplay.IsPanningEnabled">
-            <summary>
-            Indicates if panning is enabled or not. This
-            applies to both mouse and keyboard panning.
-            </summary>
-        </member>
-        <member name="P:TestShapeFile.ShapeDisplay.IsDisplayLonLatEnabled">
-            <summary>
-            Indicates if display of lon/lat coordinates
-            is enabled or not.
-            </summary>
-        </member>
-        <member name="P:TestShapeFile.ShapeDisplay.GeometryType">
-            <summary>
-            Specifies the geometry type to use when creating WPF shapes.
-            </summary>
-        </member>
-        <member name="T:TestShapeFile.ShapeDisplay.ReadNextPrototype">
-            <summary>
-            Defines the prototype for a method that reads a block
-            of shapefile records. Such a method is intended to be
-            executed by the Dispatcher.
-            </summary>
-            <param name="info">Shapefile read information.</param>
-        </member>
-        <member name="T:TestShapeFile.ShapeDisplay.DisplayNextPrototype">
-            <summary>
-            Defines the prototype for a method that creates and displays
-            a set of WPF shapes. Such a method is intended to be
-            executed by the Dispatcher.
-            </summary>
-            <param name="info">Shapefile read information.</param>
-        </member>
-        <member name="T:TestShapeFile.App">
-            <summary>
-            Interaction logic for App.xaml.
-            </summary>
-            <summary>
-            App
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.App.#ctor">
-            <summary>
-            Constructor for the App class.
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.App.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="M:TestShapeFile.App.Main">
-            <summary>
-            Application Entry Point.
-            </summary>
-        </member>
         <member name="T:TestShapeFile.ShapeType">
             <summary>
             Enumeration defining the various shape types. Each shapefile
@@ -949,6 +372,583 @@
         <member name="P:TestShapeFile.ShapeFile.Records">
             <summary>
             Access the collection of records for this shapefile.
+            </summary>
+        </member>
+        <member name="T:TestShapeFile.App">
+            <summary>
+            Interaction logic for App.xaml.
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.App.#ctor">
+            <summary>
+            Constructor for the App class.
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:TestShapeFile.GeometryType">
+            <summary>
+            The GeometryType enumeration defines geometry types that
+            can be used when creating WPF shapes. Choosing a stream
+            geometry type can improve rendering performance.
+            </summary>
+        </member>
+        <member name="F:TestShapeFile.GeometryType.UsePathGeometry">
+            <summary>
+            Use path geometry containing path figures.
+            </summary>
+        </member>
+        <member name="F:TestShapeFile.GeometryType.UseStreamGeometry">
+            <summary>
+            Use StreamGeometry with StreamGeometryContext class
+            to specify drawing instructions.
+            </summary>
+        </member>
+        <member name="F:TestShapeFile.GeometryType.UseStreamGeometryNotStroked">
+            <summary>
+            Same as UseStreamGeometry except that the figures
+            will be unstroked for greater performance (borders
+            won't be displayed for the shapes).
+            </summary>
+        </member>
+        <member name="T:TestShapeFile.ShapeDisplay">
+            <summary>
+            ShapeDisplay is a helper class for importing ESRI shapefiles
+            and creating/displaying shapes on a WPF canvas. During the
+            import step, a progress window is displayed. This is implemented
+            using the WPF single-threaded programming model, which allows
+            tasks to be executed by a Dispatcher instance while keeping the
+            UI responsive.
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.#ctor(System.Windows.Window,System.Windows.Controls.Canvas)">
+            <summary>
+            Constructor for the ShapeDisplay class.
+            </summary>
+            <param name="owner">Window that acts as an owner to child windows.</param>
+            <param name="canvas">The canvas on which to create WPF shapes.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.ReadShapeFile(System.String)">
+            <summary>
+            Read shapes and attributes from the given shapefile.
+            </summary>
+            <param name="fileName">Full pathname of a shapefile.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.CancelReadShapeFile">
+            <summary>
+            Request the current shapefile read operation to be cancelled.
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.ResetCanvas">
+            <summary>
+            Reset the canvas.
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.Zoom(System.Double)">
+            <summary>
+            Perform a zoom operation about the current center
+            of the canvas.
+            </summary>
+            <param name="zoomFactor">Zoom multiplication factor (1, 2, 4, etc).</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.Pan(System.Double,System.Double)">
+            <summary>
+            Perform a panning operation given X and Y factor values
+            which can be thought of as a fraction of the canvas actual
+            width or height.
+            </summary>
+            <param name="factorX">Fraction of canvas actual width to pan horizontally.</param>
+            <param name="factorY">Fraction of canvas actual height to pan vertically.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.SaveToXaml(System.IO.Stream)">
+            <summary>
+            Save the owner object (the main window) to XAML.
+            This method may take a long time to run if there
+            are many objects on the canvas (shapefile > 1 Mb).
+            </summary>
+            <param name="stream">Output stream for writing the XAML.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.CreateShapeTransform(TestShapeFile.ShapeFileReadInfo)">
+            <summary>
+            Computes a transformation so that the shapefile geometry
+            will maximize the available space on the canvas and be
+            perfectly centered as well.
+            </summary>
+            <param name="info">Shapefile information.</param>
+            <returns>A transformation object.</returns>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.CreateShapeBrushes(System.Double,System.Double)">
+            <summary>
+            Create a set of linear gradient brushes which we can use
+            as a random pool for assignment to WPF shapes. A higher
+            gradient factor results in a stronger gradient effect.
+            </summary>
+            <param name="gradientFactor">Gradient factor from 0 to 1.</param>
+            <param name="gradientAngle">Direction of gradient in degrees.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.GetAdjustedColor(System.Windows.Media.Color,System.Double)">
+            <summary>
+            Given an input color, return an adjusted color using a
+            factor value which ranges from 0 to 1. The larger the factor,
+            the lighter the adjusted color. A factor of 0 means no adjustment
+            to the input color.
+            </summary>
+            <remarks>
+            Note that the alpha component of the input color is not adjusted.
+            </remarks>
+            <param name="inColor">Input color.</param>
+            <param name="factor">Color adjustment factor, from 0 to 1.</param>
+            <returns>An adjusted color value.</returns>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.GetRandomShapeBrush">
+            <summary>
+            Get the next brush that can be used to fill a WPF shape.
+            </summary>
+            <returns>A randomly selected brush.</returns>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.ReadNextShapeRecord(TestShapeFile.ShapeFileReadInfo)">
+            <summary>
+            Read a block of shape file records and possibly schedule
+            the next read with the dispatcher.
+            </summary>
+            <param name="info">Shapefile read information.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.EndReadShapeFile">
+            <summary>
+            Perform some cleanup at the end of reading a shapefile.
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.EndReadShapeFile(TestShapeFile.ShapeFileReadInfo)">
+            <summary>
+            Perform some cleanup at the end of reading a shapefile.
+            </summary>
+            <param name="info">Shapefile read information.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.ReadDbaseAttributes(TestShapeFile.ShapeFileReadInfo)">
+            <summary>
+            Read dBASE file attributes.
+            </summary>
+            <param name="info">Shapefile read information.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.CreateWPFShape(System.String,TestShapeFile.ShapeFileRecord)">
+            <summary>
+            Create a WPF shape given a shapefile record.
+            </summary>
+            <param name="shapeName">The name of the WPF shape.</param>
+            <param name="record">Shapefile record.</param>
+            <returns>The created WPF shape.</returns>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.CreatePathGeometry(TestShapeFile.ShapeFileRecord)">
+            <summary>
+            Create a PathGeometry given a shapefile record.
+            </summary>
+            <param name="record">Shapefile record.</param>
+            <returns>A PathGeometry instance.</returns>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.CreateStreamGeometry(TestShapeFile.ShapeFileRecord)">
+            <summary>
+            Create a StreamGeometry given a shapefile record.
+            </summary>
+            <param name="record">Shapefile record.</param>
+            <returns>A StreamGeometry instance.</returns>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.CreateWPFPoint(System.String,TestShapeFile.ShapeFileRecord)">
+            <summary>
+            Create a WPF shape to represent a shapefile point or
+            multipoint record.
+            </summary>
+            <param name="shapeName">The name of the WPF shape.</param>
+            <param name="record">Shapefile record.</param>
+            <returns>The created WPF shape.</returns>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.DisplayShapes(TestShapeFile.ShapeFileReadInfo)">
+            <summary>
+            Begin creating and displaying WPF shapes on the canvas.
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.DisplayNextShapeRecord(TestShapeFile.ShapeFileReadInfo)">
+            <summary>
+            Display a block of shape records as WPF shapes, and schedule
+            the next display with the dispatcher if needed.
+            </summary>
+            <param name="info">Shapefile read information.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.ShowProgress(System.String,System.Double)">
+            <summary>
+            Show the progress window with the given progress value.
+            </summary>
+            <param name="progressText">Progress text to display.</param>
+            <param name="progressValue">Progress value from 0 to 100 percent.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.HideProgress">
+            <summary>
+            Hide the progress window.
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.progressWindow_Cancel(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Handle the Cancel button being pressed in the progress window.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.progressWindow_Closed(System.Object,System.EventArgs)">
+            <summary>
+            Handle closing of the progress window.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.GetLonLatCoordinates(System.Windows.Point)">
+            <summary>
+            Given a canvas position, convert it to a longitude
+            and latitude coordinate.
+            </summary>
+            <param name="canvasPosition">A canvas position or location.</param>
+            <returns>The corresponding point in lon/lat coordinates.</returns>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.GetLonLatDisplayText(System.Windows.Point)">
+            <summary>
+            Given a lon/lat coordinate, determine the corresponding
+            display text.
+            </summary>
+            <param name="lonLat">A lon/lat coordinate.</param>
+            <returns>Formatted lon/lat display text.</returns>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.DisplayLonLatCoord(System.Windows.Point)">
+            <summary>
+            Given a canvas position, display the corresponding
+            lon/lat coordinates on the canvas.
+            </summary>
+            <param name="canvasPosition">A canvas position or location.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.DisplayLonLatDefault">
+            <summary>
+            Display some default text in the lon/lat label.
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.canvas_MouseEnter(System.Object,System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Handle the MouseEnter event for the canvas.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.canvas_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Handle the MouseDown event for the canvas.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.canvas_MouseMove(System.Object,System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Handle the MouseMove event for the canvas.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.canvas_MouseUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Handle the MouseUp event for the canvas.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.ShapeDisplay.canvas_MouseLeave(System.Object,System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Handle the MouseLeave event for the canvas.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="P:TestShapeFile.ShapeDisplay.IsReadingShapeFile">
+            <summary>
+            Indicates if a shapefile read operation is in progress.
+            </summary>
+        </member>
+        <member name="P:TestShapeFile.ShapeDisplay.CanZoom">
+            <summary>
+            Indicates if we can perform a zoom operation. This is true
+            the shape transform has been set (meaning at least one shapefile
+            has been loaded).
+            </summary>
+        </member>
+        <member name="P:TestShapeFile.ShapeDisplay.IsPanningEnabled">
+            <summary>
+            Indicates if panning is enabled or not. This
+            applies to both mouse and keyboard panning.
+            </summary>
+        </member>
+        <member name="P:TestShapeFile.ShapeDisplay.IsDisplayLonLatEnabled">
+            <summary>
+            Indicates if display of lon/lat coordinates
+            is enabled or not.
+            </summary>
+        </member>
+        <member name="P:TestShapeFile.ShapeDisplay.GeometryType">
+            <summary>
+            Specifies the geometry type to use when creating WPF shapes.
+            </summary>
+        </member>
+        <member name="T:TestShapeFile.ShapeDisplay.ReadNextPrototype">
+            <summary>
+            Defines the prototype for a method that reads a block
+            of shapefile records. Such a method is intended to be
+            executed by the Dispatcher.
+            </summary>
+            <param name="info">Shapefile read information.</param>
+        </member>
+        <member name="T:TestShapeFile.ShapeDisplay.DisplayNextPrototype">
+            <summary>
+            Defines the prototype for a method that creates and displays
+            a set of WPF shapes. Such a method is intended to be
+            executed by the Dispatcher.
+            </summary>
+            <param name="info">Shapefile read information.</param>
+        </member>
+        <member name="T:TestShapeFile.ProgressWindow">
+            <summary>
+            ProgressWindow implements a basic progress window that
+            supports a Cancel button.
+            </summary>
+            <summary>
+            ProgressWindow
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.ProgressWindow.#ctor">
+            <summary>
+            Constructor for ProgressWindow class.
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.ProgressWindow.cancelButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle the Click event for the Cancel button.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.ProgressWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="E:TestShapeFile.ProgressWindow.Cancel">
+            <summary>
+            Event to notify that the Cancel button has been pressed.
+            </summary>
+        </member>
+        <member name="P:TestShapeFile.ProgressWindow.ProgressText">
+            <summary>
+            Specify the text to display in the progress window.
+            </summary>
+        </member>
+        <member name="P:TestShapeFile.ProgressWindow.ProgressValue">
+            <summary>
+            Specify the value of the progress bar.
+            </summary>
+        </member>
+        <member name="T:TestShapeFile.Properties.Resources">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:TestShapeFile.Properties.Resources.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:TestShapeFile.Properties.Resources.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:TestShapeFile.Properties.Resources.MainWindow_ExitQuestion">
+            <summary>
+              Ищет локализованную строку, похожую на Exit application?.
+            </summary>
+        </member>
+        <member name="P:TestShapeFile.Properties.Resources.MainWindow_ResetQuestion">
+            <summary>
+              Ищет локализованную строку, похожую на Reset canvas?.
+            </summary>
+        </member>
+        <member name="P:TestShapeFile.Properties.Resources.MainWindow_Title">
+            <summary>
+              Ищет локализованную строку, похожую на TestShapeFile.
+            </summary>
+        </member>
+        <member name="T:TestShapeFile.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml.
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.#ctor">
+            <summary>
+            Constructor for MainWindow class.
+            </summary>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.fileMI_SubmenuOpened(System.Object,System.EventArgs)">
+            <summary>
+            Handle when the File menu is opened, so that we can update
+            the enabled state of the menu items appropriately.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.openMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle File|Open menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.resetMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle File|Reset menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.exitMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle File|Exit menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.viewMI_SubmenuOpened(System.Object,System.EventArgs)">
+            <summary>
+            Handle when the View Menu is opened.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.displayLonLatMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Display Lon/Lat menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.enablePanningMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Enable Panning menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.zoomMI_SubmenuOpened(System.Object,System.EventArgs)">
+            <summary>
+            Handle when the View|Zoom menu is opened, so that we can update
+            the enabled state of the menu items appropriately.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.zoom50_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 50% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.zoom100_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 100% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.zoom200_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 200% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.zoom400_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 400% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.zoom800_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 800% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.zoom1600_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 1600% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.zoom3200_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle View|Zoom 3200% menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.geometryTypeMI_SubmenuOpened(System.Object,System.EventArgs)">
+            <summary>
+            Handle when the Options|Geometry Type menu is opened, so that we can
+            update the enabled and checked states of the menu items appropriately.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.pathGeometryMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle Geometry Type|Path Geometry menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.streamGeometryMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle Geometry|Stream Geometry menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.streamGeometryUnstrokedMI_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle Geometry Type|Stream Geometry Unstroked menu item click.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.mainWindow_KeyDown(System.Object,System.Windows.Input.KeyboardEventArgs)">
+            <summary>
+            Handle the KeyDown event for the main window.
+            </summary>
+            <param name="sender">Event sender.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:TestShapeFile.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
             </summary>
         </member>
     </members>
