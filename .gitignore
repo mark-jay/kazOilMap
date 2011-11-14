@@ -1,5 +1,6 @@
 
-# all stuff in a bin folder
+# all stuff in bin and obj folder
 ./bin/*
+./obj/*
 
 # 
