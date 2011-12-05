@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace kazOilMap
 {
@@ -32,6 +33,9 @@ namespace kazOilMap
         ShapeDisplay shapeDisplay;
 
         private static readonly GradientBrush MENU_BACKGROUND = new LinearGradientBrush(Color.FromArgb(255, 158, 190, 245), Color.FromArgb(255, 196, 218, 250), 45);
+
+        private Params currentProject = null;
+
         #endregion Private fields
 
         #region Constructor
@@ -86,7 +90,7 @@ namespace kazOilMap
             // Disable menu items if we are already reading a shapefile.
             this.openMI.IsEnabled  = !this.shapeDisplay.IsReadingShapeFile;
             this.resetMI.IsEnabled = this.openMI.IsEnabled;           
-        }
+        } 
 
         /// <summary>
         /// Handle File|Open menu item click.
@@ -352,112 +356,80 @@ namespace kazOilMap
         }
         #endregion Keyboard handling
 
+        #region My menu option handlers
+        private void RunTests(object sender, EventArgs e)
+        {
+            Params.ParamsTest();
+        }
+
+        private void NewProject(object sender, EventArgs e)
+        {
+            currentProject = MakeNewProject();
+            ShowMessage(Messages.projectCreated);
+            saveProjectAsMI.IsEnabled = true;
+        }
+
+        private void SaveProjectAs(object sender, EventArgs e) 
+        {
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.FileName = Messages.kazOilMapProject; // Default file name
+            dlg.DefaultExt = ""; // Default file extension
+            // dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
+
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                string filename = dlg.FileName;
+                Debug(filename);
+            }
+        }
+        #endregion
+
+        #region projects managing, tests
+        private Params MakeNewProject()
+        {
+            return Params.MakeDefaultProject();
+        }
+        #endregion 
+
+        #region Utils
+        /// <summary>
+        /// shows message and then fades out 
+        /// </summary>
+        /// <param name="message"></param>
+        private void ShowMessage(string message)
+        {
+            Messager.Content = message;
+
+            Messager.Visibility = System.Windows.Visibility.Visible;
+
+            DoubleAnimation a = new DoubleAnimation
+            {
+                From = 1.0,
+                To = 0.0,
+                FillBehavior = FillBehavior.Stop,
+                BeginTime = TimeSpan.FromSeconds(2),
+                Duration = new Duration(TimeSpan.FromSeconds(0.5))
+            };
+            Storyboard storyboard = new Storyboard();
+
+            storyboard.Children.Add(a);
+            Storyboard.SetTarget(a, Messager);
+            Storyboard.SetTargetProperty(a, new PropertyPath(OpacityProperty));
+            storyboard.Completed += delegate { Messager.Visibility = System.Windows.Visibility.Hidden; };
+            storyboard.Begin();
+        }
+
+        private void Debug(string message)
+        {
+            ShowMessage("debug: " + message);
+        }
+        #endregion
+
     }
 }
 
 // END
-
-/*
-<Window x:Class="TestShapeFile.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="TestShapeFile" Height="409" Width="576" xmlns:my="clr-namespace:System;assembly=mscorlib"
-    Closing="mainWindow_Closing" KeyDown="mainWindow_KeyDown">
-    <Grid>
-    <Menu Height="22" Margin="0,0,0,0" Name="menu1" VerticalAlignment="Top" >
-      <MenuItem Name="fileMI" Header="_File" SubmenuOpened="fileMI_SubmenuOpened">
-        <MenuItem Name="openMI" Header="_Open..." Click="openMI_Click"/>        
-        <Separator/>
-        <MenuItem Name="resetMI" Header="_Reset" Click="resetMI_Click"/>
-        <Separator/>
-        <MenuItem Name="exitMI" Header="E_xit" Click="exitMI_Click"/>
-      </MenuItem>
-      <MenuItem Name="viewMI" Header="_View" SubmenuOpened="viewMI_SubmenuOpened">
-        <MenuItem Name="displayLonLatMI" Header="Display _Lon/Lat" IsCheckable="True" IsChecked="True" Click="displayLonLatMI_Click"/>
-        <Separator/>
-        <MenuItem Name="enablePanningMI" Header="Enable _Panning" IsCheckable="True" IsChecked="True" Click="enablePanningMI_Click"/>
-        <MenuItem Name="zoomMI" Header="_Zoom" SubmenuOpened="zoomMI_SubmenuOpened">
-          <MenuItem Name="zoom50MI" Header="Zoom 50%" Click="zoom50_Click"/>
-          <MenuItem Name="zoom100MI" Header="Zoom 100%" Click="zoom100_Click"/>
-          <MenuItem Name="zoom200MI" Header="Zoom 200%" Click="zoom200_Click"/>
-          <MenuItem Name="zoom400MI" Header="Zoom 400%" Click="zoom400_Click"/>
-          <MenuItem Name="zoom800MI" Header="Zoom 800%" Click="zoom800_Click"/>
-          <MenuItem Name="zoom1600MI" Header="Zoom 1600%" Click="zoom1600_Click"/>
-          <MenuItem Name="zoom3200MI" Header="Zoom 3200%" Click="zoom3200_Click"/>
-        </MenuItem>
-      </MenuItem>
-      <MenuItem Header="Optio_ns">
-        <MenuItem Name="geometryTypeMI" Header="_Geometry Type" SubmenuOpened="geometryTypeMI_SubmenuOpened">
-          <MenuItem Name="pathGeometryMI" Header="_Path Geometry" IsCheckable="True" Click="pathGeometryMI_Click"/>
-          <MenuItem Name="streamGeometryMI" Header="_Stream Geometry" IsCheckable="True" Click="streamGeometryMI_Click"/>
-          <MenuItem Name="streamGeometryUnstrokedMI" Header="Stream Geometry _Unstroked" IsCheckable="True" Click="streamGeometryUnstrokedMI_Click"/>
-        </MenuItem>
-      </MenuItem>
-    </Menu>
-    <Menu Height="22" Margin="0,22,0,0" Name="menu2" VerticalAlignment="Top" HorizontalAlignment="Right">
-            <MenuItem>
-                <MenuItem.Header>
-                    <StackPanel>
-                        <Image Width="20" Height="20" Source="./resources/images/zoom_in.ico" />
-                        <ContentPresenter Content="Reports" />
-                    </StackPanel>
-                </MenuItem.Header>
-            </MenuItem>
-            <MenuItem>
-                <MenuItem.Header>
-                    <StackPanel>
-                        <Image Width="20" Height="20" Source="./resources/images/zoom_out.ico" />
-                        <ContentPresenter Content="Reports" />
-                    </StackPanel>
-                </MenuItem.Header>
-            </MenuItem>
-            <MenuItem>
-                <MenuItem.Header>
-                    <StackPanel>
-                        <Image Width="20" Height="20" Source="./resources/images/hand.png" />
-                        <ContentPresenter Content="Reports" />
-                    </StackPanel>
-                </MenuItem.Header>
-            </MenuItem>
-    </Menu>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="9*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="2*"/>
-            </Grid.RowDefinitions>
-            <Canvas Margin="0,44,0,0" MinHeight="50" MinWidth="50" Name="canvas1" ClipToBounds="True" RenderOptions.BitmapScalingMode="Unspecified">
-            </Canvas>
-            <GridSplitter HorizontalAlignment="Right" 
-                  VerticalAlignment="Stretch" 
-                  Grid.Row="1" ResizeBehavior="PreviousAndNext"
-                  Width="5" Background="#FFBCBCBC"/>
-            <Label Content="Right" Grid.Row="2" />
-        </Grid> 
-    </Grid>
-</Window>
- * 
-         <GridSplitter HorizontalAlignment="Right" 
-                      VerticalAlignment="Stretch" 
-                      Grid.Row="1" ResizeBehavior="PreviousAndNext"
-                      Width="5" Background="#FFBCBCBC"/>
- * 
- * <Label Content="Bottom" Grid.Row="4" />
- 
- <Menu  Margin="0,22,0,0" Height="20" Background="#FFA9D1F4">
-            <Menu.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <DockPanel HorizontalAlignment="Stretch"/>
-                </ItemsPanelTemplate>
-            </Menu.ItemsPanel>
-            <MenuItem Header="File">
-                <MenuItem Header="Exit"/>
-            </MenuItem>
-            <MenuItem Header="Edit">
-                <MenuItem Header="Cut"/>
-            </MenuItem>
-            <MenuItem Header="Help" HorizontalAlignment="Right">
-                <MenuItem Header="About"/>
-            </MenuItem>
-        </Menu>
-*/

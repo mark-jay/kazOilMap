@@ -9,33 +9,37 @@
         </Grid.RowDefinitions>
         <Menu Height="22" Margin="0,0,0,0" Name="menu1" VerticalAlignment="Top">
             <MenuItem Name="fileMI" Header="_File" SubmenuOpened="fileMI_SubmenuOpened">
-            <MenuItem Name="openMI" Header="_Open..." Click="openMI_Click"/>
-            <Separator/>
-            <MenuItem Name="resetMI" Header="_Reset" Click="resetMI_Click"/>
-            <Separator/>
-            <MenuItem Name="exitMI" Header="E_xit" Click="exitMI_Click"/>
-        </MenuItem>
+                <MenuItem Name="runTestMI" Header="runTests" Click="RunTests"/>
+                <MenuItem Name="newProjectMI" Header="Create new project" Click="NewProject"/>
+                <MenuItem Name="saveProjectAsMI" Header="save project as" Click="SaveProjectAs" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Name="openMI" Header="_Open..." Click="openMI_Click"/>
+                <Separator/>
+                <MenuItem Name="resetMI" Header="_Reset" Click="resetMI_Click"/>
+                <Separator/>
+                <MenuItem Name="exitMI" Header="E_xit" Click="exitMI_Click"/>
+            </MenuItem>
             <MenuItem Name="viewMI" Header="_View" SubmenuOpened="viewMI_SubmenuOpened">
-            <MenuItem Name="displayLonLatMI" Header="Display _Lon/Lat" IsCheckable="True" IsChecked="True" Click="displayLonLatMI_Click"/>
-            <Separator/>
-            <MenuItem Name="enablePanningMI" Header="Enable _Panning" IsCheckable="True" IsChecked="True" Click="enablePanningMI_Click"/>
-            <MenuItem Name="zoomMI" Header="_Zoom" SubmenuOpened="zoomMI_SubmenuOpened">
-                <MenuItem Name="zoom50MI" Header="Zoom 50%" Click="zoom50_Click"/>
-                <MenuItem Name="zoom100MI" Header="Zoom 100%" Click="zoom100_Click"/>
-                <MenuItem Name="zoom200MI" Header="Zoom 200%" Click="zoom200_Click"/>
-                <MenuItem Name="zoom400MI" Header="Zoom 400%" Click="zoom400_Click"/>
-                <MenuItem Name="zoom800MI" Header="Zoom 800%" Click="zoom800_Click"/>
-                <MenuItem Name="zoom1600MI" Header="Zoom 1600%" Click="zoom1600_Click"/>
-                <MenuItem Name="zoom3200MI" Header="Zoom 3200%" Click="zoom3200_Click"/>
+                <MenuItem Name="displayLonLatMI" Header="Display _Lon/Lat" IsCheckable="True" IsChecked="True" Click="displayLonLatMI_Click"/>
+                <Separator/>
+                <MenuItem Name="enablePanningMI" Header="Enable _Panning" IsCheckable="True" IsChecked="True" Click="enablePanningMI_Click"/>
+                <MenuItem Name="zoomMI" Header="_Zoom" SubmenuOpened="zoomMI_SubmenuOpened">
+                    <MenuItem Name="zoom50MI" Header="Zoom 50%" Click="zoom50_Click"/>
+                    <MenuItem Name="zoom100MI" Header="Zoom 100%" Click="zoom100_Click"/>
+                    <MenuItem Name="zoom200MI" Header="Zoom 200%" Click="zoom200_Click"/>
+                    <MenuItem Name="zoom400MI" Header="Zoom 400%" Click="zoom400_Click"/>
+                    <MenuItem Name="zoom800MI" Header="Zoom 800%" Click="zoom800_Click"/>
+                    <MenuItem Name="zoom1600MI" Header="Zoom 1600%" Click="zoom1600_Click"/>
+                    <MenuItem Name="zoom3200MI" Header="Zoom 3200%" Click="zoom3200_Click"/>
+                </MenuItem>
             </MenuItem>
-        </MenuItem>
             <MenuItem Header="Optio_ns">
-            <MenuItem Name="geometryTypeMI" Header="_Geometry Type" SubmenuOpened="geometryTypeMI_SubmenuOpened">
-                <MenuItem Name="pathGeometryMI" Header="_Path Geometry" IsCheckable="True" Click="pathGeometryMI_Click"/>
-                <MenuItem Name="streamGeometryMI" Header="_Stream Geometry" IsCheckable="True" Click="streamGeometryMI_Click"/>
-                <MenuItem Name="streamGeometryUnstrokedMI" Header="Stream Geometry _Unstroked" IsCheckable="True" Click="streamGeometryUnstrokedMI_Click"/>
+                <MenuItem Name="geometryTypeMI" Header="_Geometry Type" SubmenuOpened="geometryTypeMI_SubmenuOpened">
+                    <MenuItem Name="pathGeometryMI" Header="_Path Geometry" IsCheckable="True" Click="pathGeometryMI_Click"/>
+                    <MenuItem Name="streamGeometryMI" Header="_Stream Geometry" IsCheckable="True" Click="streamGeometryMI_Click"/>
+                    <MenuItem Name="streamGeometryUnstrokedMI" Header="Stream Geometry _Unstroked" IsCheckable="True" Click="streamGeometryUnstrokedMI_Click"/>
+                </MenuItem>
             </MenuItem>
-        </MenuItem>
         </Menu>
         <Menu Height="22" Margin="0,22,0,0" Name="menu2" VerticalAlignment="Top" FlowDirection="RightToLeft">
             <MenuItem HorizontalAlignment="Right">
@@ -69,7 +73,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="9*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Left" Grid.Column="0" />
+            <Label Content="Left" Grid.Column="0" Opacity="0.1"/>
             <GridSplitter HorizontalAlignment="Right" 
                   VerticalAlignment="Stretch" 
                   Grid.Column="1" ResizeBehavior="PreviousAndNext"
@@ -78,6 +82,13 @@
             </Canvas>
         </Grid>
         <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" ResizeBehavior="PreviousAndNext" Grid.Row="3" Height="5" Background="#FFBCBCBC"/>
-        <Label Content="Bottom" Grid.Row="4" />
+        <Grid Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label Name="Messager" Content="Messager" Grid.Row="1" Visibility="Hidden"/>
+            <Label Margin="0,22,0,0" Content="Bottom" Grid.Row="2" Opacity="0.1"/>
+        </Grid>
     </Grid>
 </Window>
