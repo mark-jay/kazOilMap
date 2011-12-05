@@ -83,12 +83,9 @@
         </Grid>
         <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" ResizeBehavior="PreviousAndNext" Grid.Row="3" Height="5" Background="#FFBCBCBC"/>
         <Grid Grid.Row="4">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
             <Label Name="Messager" Content="Messager" Grid.Row="1" Visibility="Hidden"/>
-            <Label Margin="0,22,0,0" Content="Bottom" Grid.Row="2" Opacity="0.1"/>
+            <Label Name="DebugMessager" Margin="0,15,0,0" Content="" Grid.Row="2" />
+            <Label Margin="0,30,0,0" Content="Bottom" Grid.Row="3" Opacity="0.1"/>
         </Grid>
     </Grid>
 </Window>

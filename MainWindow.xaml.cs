@@ -18,6 +18,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 
+using Ionic.Zip;
+
 namespace kazOilMap
 {
     /// <summary>
@@ -359,7 +361,8 @@ namespace kazOilMap
         #region My menu option handlers
         private void RunTests(object sender, EventArgs e)
         {
-            Params.ParamsTest();
+            // Params.ParamsTest();
+            Debug(Utils.GetTempDirectory("asd"));
         }
 
         private void NewProject(object sender, EventArgs e)
@@ -373,8 +376,8 @@ namespace kazOilMap
         {
             Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
             dlg.FileName = Messages.kazOilMapProject; // Default file name
-            dlg.DefaultExt = ""; // Default file extension
-            // dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
+            dlg.DefaultExt = "";// Messages.kazOilMapExtension; // Default file extension
+            dlg.Filter = Messages.kazOilMapFilter; // Filter files by extension
 
             Nullable<bool> result = dlg.ShowDialog();
 
@@ -383,7 +386,22 @@ namespace kazOilMap
             {
                 // Open document
                 string filename = dlg.FileName;
-                Debug(filename);
+                string actualProjectName = System.IO.Path.GetFileNameWithoutExtension(filename);
+                string filenameParentDir = System.IO.Path.GetDirectoryName(filename);
+
+                // actual zipping
+                using (ZipFile zip = new ZipFile())
+                {
+                    string dir = Utils.GetTempDirectory();
+
+                    currentProject.Serialize(dir + System.IO.Path.DirectorySeparatorChar + Messages.kazOilMapMainXml);
+
+                    // Debug(dir + System.IO.Path.DirectorySeparatorChar + Messages.kazOilMapMainXml);
+
+                    zip.AddDirectory(dir);
+                    zip.AddDirectoryByName("output");
+                    zip.Save(filename);
+                }
             }
         }
         #endregion
@@ -425,7 +443,7 @@ namespace kazOilMap
 
         private void Debug(string message)
         {
-            ShowMessage("debug: " + message);
+            DebugMessager.Content = message;
         }
         #endregion
 

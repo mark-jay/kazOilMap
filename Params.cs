@@ -15,6 +15,25 @@ namespace kazOilMap
 
         #endregion
 
+        #region actual serialization/deserialization
+        public void Serialize(string path) 
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Params));
+            StreamWriter writer = new StreamWriter(path);
+            serializer.Serialize(writer, this);
+            writer.Close();
+        }
+
+        public static Params Deserialize(string path)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Params));
+            StreamReader reader = new StreamReader(path);
+            Params p = (Params)serializer.Deserialize(reader);
+            reader.Close();
+            return p;
+        }
+        #endregion
+
         public Params()
         {
         }
@@ -24,28 +43,10 @@ namespace kazOilMap
             string path = "c:/myTestClass.xml";
             Params p = MakeDefaultProject();
 
-            // serializeTest(p, path);
+            // p.Serialize(path);
 
-            p = deserializeTest(path);
+            p = Deserialize(path);
             Console.WriteLine(p.myInt + " " + p.myArray + " " + p.myString);
-        }
-
-        private static void serializeTest(Params p, string path)
-        {
-            // these lines do the actual serialization
-            XmlSerializer serializer = new XmlSerializer(typeof(Params));
-            StreamWriter writer = new StreamWriter(path);
-            serializer.Serialize(writer, p);
-            writer.Close();
-        }
-
-        private static Params deserializeTest(string path)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(Params));
-            StreamReader reader = new StreamReader(path);
-            Params p = (Params)serializer.Deserialize(reader);
-            reader.Close();
-            return p;
         }
 
         internal static Params MakeDefaultProject()

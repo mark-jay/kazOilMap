@@ -11,5 +11,9 @@ namespace kazOilMap
     {
         public static readonly string projectCreated = "Проект создан";
         public static readonly string kazOilMapProject = "newOilMalProject";
+        public static readonly string kazOilMapExtension = "kom";
+        public static readonly string kazOilMapMainXml = "project.xml";
+        public static readonly string kazOilMapFilter = "Oil map project documents (." + 
+            kazOilMapExtension + ")|*." + kazOilMapExtension;
     }
 }
