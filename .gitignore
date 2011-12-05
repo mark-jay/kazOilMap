@@ -3,4 +3,5 @@
 bin
 obj
 
-# 
+# Not trackable resources
+resources/NotInGit
