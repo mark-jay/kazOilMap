@@ -79,6 +79,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="KomProject.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Utils.cs" />
     <Page Include="MainWindow.xaml">

@@ -12,6 +12,7 @@
                 <MenuItem Name="runTestMI" Header="runTests" Click="RunTests"/>
                 <MenuItem Name="newProjectMI" Header="Create new project" Click="NewProject"/>
                 <MenuItem Name="saveProjectAsMI" Header="save project as" Click="SaveProjectAs" IsEnabled="False"/>
+                <MenuItem Name="openProjectMI" Header="open project" Click="OpenProject"/>
                 <Separator/>
                 <MenuItem Name="openMI" Header="_Open..." Click="openMI_Click"/>
                 <Separator/>

@@ -36,7 +36,7 @@ namespace kazOilMap
 
         private static readonly GradientBrush MENU_BACKGROUND = new LinearGradientBrush(Color.FromArgb(255, 158, 190, 245), Color.FromArgb(255, 196, 218, 250), 45);
 
-        private Params currentProject = null;
+        private KomProject currentProject = null;
 
         #endregion Private fields
 
@@ -394,7 +394,7 @@ namespace kazOilMap
                 {
                     string dir = Utils.GetTempDirectory();
 
-                    currentProject.Serialize(dir + System.IO.Path.DirectorySeparatorChar + Messages.kazOilMapMainXml);
+                    currentProject.paramz.Serialize(dir + System.IO.Path.DirectorySeparatorChar + Messages.kazOilMapMainXml);
 
                     // Debug(dir + System.IO.Path.DirectorySeparatorChar + Messages.kazOilMapMainXml);
 
@@ -404,12 +404,49 @@ namespace kazOilMap
                 }
             }
         }
+
+        private void OpenProject(object sender, EventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.FileName = ""; // Default file name
+            dlg.DefaultExt = Messages.kazOilMapExtension; // Default file extension
+            dlg.Filter = Messages.kazOilMapFilter; // Filter files by extension
+
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                string filename = dlg.FileName;
+                string actualProjectName = System.IO.Path.GetFileNameWithoutExtension(filename);
+                string filenameParentDir = System.IO.Path.GetDirectoryName(filename);
+                
+                // actual zipping
+                using (ZipFile zip = new ZipFile(filename))
+                {
+                    string dir = Utils.GetTempDirectory() + System.IO.Path.DirectorySeparatorChar + "1";
+
+                    Debug(dir);
+
+                    zip.ExtractAll(dir + System.IO.Path.DirectorySeparatorChar + "1");
+
+                    // Debug(dir + System.IO.Path.DirectorySeparatorChar + Messages.kazOilMapMainXml);
+
+                    /*
+                    zip.AddDirectory(dir);
+                    zip.AddDirectoryByName("output");
+                    zip.Save(filename);
+                     */
+                }
+            }
+        }
         #endregion
 
         #region projects managing, tests
-        private Params MakeNewProject()
+        private KomProject MakeNewProject()
         {
-            return Params.MakeDefaultProject();
+            return new KomProject(Params.MakeDefaultProject());
         }
         #endregion 
 

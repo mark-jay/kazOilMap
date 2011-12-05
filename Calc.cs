@@ -6,7 +6,7 @@ namespace kazOilMap
 {
     class Calc
     {
-        static double[][] RunCalc(Params parms) {
+        public static double[][] RunCalc(Params parms) {
             throw new NotSupportedException("method's not yet implemented");
         }
     }
